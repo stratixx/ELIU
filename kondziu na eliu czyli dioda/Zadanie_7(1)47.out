@@ -1,0 +1,115 @@
+
+**** 03/09/18 10:26:32 *********** Evaluation PSpice (Nov 1999) **************
+
+ D przeczanie diody sygnaem impulsowym
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+.WIDTH IN=80 OUT=80
+
+*definicja ukadu - rdo sygnau impulsowego
+V1 1 0 PULSE(-10 10 0 0 0 0.5M 1M)
+D1 2 0 dELIU
+R1 1 2 1K
+
+.MODEL dELIU D IS=3.5E-14 TT=47N CJO=3P BV=10 M=0.33 VJ=0.8 IBV=1.0E-5 RS=1
+
+*analiza
+.TRAN 0.01m 2m
+
+.OP
+.OPTIONS NOPAGE
+.PROBE
+.END
+
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+
+
+               dELIU           
+          IS   35.000000E-15 
+          BV   10            
+         IBV   10.000000E-06 
+          RS    1            
+          TT   47.000000E-09 
+         CJO    3.000000E-12 
+          VJ     .8          
+           M     .33         
+
+
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)  -10.0000  (    2)   -9.9925  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V1           7.485E-06
+
+    TOTAL POWER DISSIPATION   7.49E-05  WATTS
+
+
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+
+
+
+
+
+**** DIODES
+
+
+NAME         D1        
+MODEL        dELIU     
+ID          -7.49E-06 
+VD          -9.99E+00 
+REQ          3.46E+03 
+CAP          1.49E-11 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)  -10.0000  (    2)   -9.9925  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V1           7.485E-06
+
+    TOTAL POWER DISSIPATION   7.49E-05  WATTS
+
+
+
+          JOB CONCLUDED
+
+          TOTAL JOB TIME            0.00
+

@@ -1,0 +1,231 @@
+
+**** 03/23/18 10:38:39 *********** Evaluation PSpice (Nov 1999) **************
+
+ BJT czstotliwoci graniczne
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+*OPIS UKADU 
+*tranzystor typu BC547B (NPN) pracujacy w poaczeniu WE
+
+Q1 2 1 0 BC547B
+*    C B E - kocwki tranzystora
+
+I1 0 1 10u
+IG 1 0 AC 1u
+* rdo prdowe zasilajce baz
+
+V2 2 0 6
+* rdo napiciowe na wyjciu
+
+* PARAMETRY MODELU TRANZYSTORA NPN 
+* 1. linia: parametry materiaowe, statyczne,  i zwizane z zalenociami temperaturowymi  
+* 2. linia: wzmocnienia prdowe, napicia Early'ego i wysoki poziom wstrzykiwania
+* 3. i 4. rezystancje obszrw, parametry dynamiczne
+
+.model BC547B NPN(Eg=1.11 IS=7.049f Xti=3 Ise=68f Ne=1.576 Isc=12.4f Nc=1.835
++ BF=280 BR=1 Xtb=1.5  Ikf=81.57m Ikr=3.924 Nk=.4767 
++ Rc=.9747 Cjc=5.25p Mjc=.3147 Vjc=.5697 Fc=.5 
++ Cje=11.5p Mje=.6715 Vje=.5 TR=10n TF=210p Itf=1.491 Xtf=40.06 Vtf=10)
+
+*definicja analizy czstotliwociowej
+.AC DEC 10 10 300meg 
+
+.PRINT AC IC(Q1) IB(Q1)
+
+.OP
+
+.OPTIONS NOPAGE
+.PROBE
+.END
+
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+
+
+               BC547B          
+               NPN             
+          IS    7.049000E-15 
+          BF  280            
+          NF    1            
+         IKF     .08157      
+         ISE   68.000000E-15 
+          NE    1.576        
+          BR    1            
+          NR    1            
+         IKR    3.924        
+         ISC   12.400000E-15 
+          NC    1.835        
+          NK     .4767       
+          RC     .9747       
+         CJE   11.500000E-12 
+         VJE     .5          
+         MJE     .6715       
+         CJC    5.250000E-12 
+         VJC     .5697       
+         MJC     .3147       
+          TF  210.000000E-12 
+         XTF   40.06         
+         VTF   10            
+         ITF    1.491        
+          TR   10.000000E-09 
+         XTB    1.5          
+          CN    2.42         
+           D     .87         
+
+
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)     .6868  (    2)    6.0000  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V2          -2.340E-03
+
+    TOTAL POWER DISSIPATION   1.40E-02  WATTS
+
+
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+
+
+
+
+
+**** BIPOLAR JUNCTION TRANSISTORS
+
+
+NAME         Q1        
+MODEL        BC547B    
+IB           1.00E-05 
+IC           2.34E-03 
+VBE          6.87E-01 
+VBC         -5.31E+00 
+VCE          6.00E+00 
+BETADC       2.34E+02 
+GM           8.82E-02 
+RPI          2.73E+03 
+RX           0.00E+00 
+RO           1.03E+12 
+CBE          5.83E-11 
+CBC          2.52E-12 
+CJS          0.00E+00 
+BETAAC       2.40E+02 
+CBX/CBX2     0.00E+00 
+FT/FT2       2.31E+08 
+
+
+
+
+ ****     AC ANALYSIS                      TEMPERATURE =   27.000 DEG C
+
+
+
+  FREQ        IC(Q1)      IB(Q1)      
+
+
+   1.000E+01   2.404E-04   1.000E-06
+   1.259E+01   2.404E-04   1.000E-06
+   1.585E+01   2.404E-04   1.000E-06
+   1.995E+01   2.404E-04   1.000E-06
+   2.512E+01   2.404E-04   1.000E-06
+   3.162E+01   2.404E-04   1.000E-06
+   3.981E+01   2.404E-04   1.000E-06
+   5.012E+01   2.404E-04   1.000E-06
+   6.310E+01   2.404E-04   1.000E-06
+   7.943E+01   2.404E-04   1.000E-06
+   1.000E+02   2.404E-04   1.000E-06
+   1.259E+02   2.404E-04   1.000E-06
+   1.585E+02   2.404E-04   1.000E-06
+   1.995E+02   2.404E-04   1.000E-06
+   2.512E+02   2.404E-04   1.000E-06
+   3.162E+02   2.404E-04   1.000E-06
+   3.981E+02   2.404E-04   1.000E-06
+   5.012E+02   2.404E-04   1.000E-06
+   6.310E+02   2.404E-04   1.000E-06
+   7.943E+02   2.404E-04   1.000E-06
+   1.000E+03   2.404E-04   1.000E-06
+   1.259E+03   2.404E-04   1.000E-06
+   1.585E+03   2.404E-04   1.000E-06
+   1.995E+03   2.404E-04   1.000E-06
+   2.512E+03   2.404E-04   1.000E-06
+   3.162E+03   2.404E-04   1.000E-06
+   3.981E+03   2.404E-04   1.000E-06
+   5.012E+03   2.404E-04   1.000E-06
+   6.310E+03   2.404E-04   1.000E-06
+   7.943E+03   2.404E-04   1.000E-06
+   1.000E+04   2.404E-04   1.000E-06
+   1.259E+04   2.404E-04   1.000E-06
+   1.585E+04   2.404E-04   1.000E-06
+   1.995E+04   2.404E-04   1.000E-06
+   2.512E+04   2.403E-04   1.000E-06
+   3.162E+04   2.403E-04   1.000E-06
+   3.981E+04   2.402E-04   1.000E-06
+   5.012E+04   2.401E-04   1.000E-06
+   6.310E+04   2.399E-04   1.000E-06
+   7.943E+04   2.396E-04   1.000E-06
+   1.000E+05   2.391E-04   1.000E-06
+   1.259E+05   2.384E-04   1.000E-06
+   1.585E+05   2.372E-04   1.000E-06
+   1.995E+05   2.353E-04   1.000E-06
+   2.512E+05   2.325E-04   1.000E-06
+   3.162E+05   2.282E-04   1.000E-06
+   3.981E+05   2.219E-04   1.000E-06
+   5.012E+05   2.129E-04   1.000E-06
+   6.310E+05   2.006E-04   1.000E-06
+   7.943E+05   1.849E-04   1.000E-06
+   1.000E+06   1.661E-04   1.000E-06
+   1.259E+06   1.454E-04   1.000E-06
+   1.585E+06   1.242E-04   1.000E-06
+   1.995E+06   1.039E-04   1.000E-06
+   2.512E+06   8.550E-05   1.000E-06
+   3.162E+06   6.955E-05   1.000E-06
+   3.981E+06   5.612E-05   1.000E-06
+   5.012E+06   4.504E-05   1.000E-06
+   6.310E+06   3.601E-05   1.000E-06
+   7.943E+06   2.872E-05   1.000E-06
+   1.000E+07   2.287E-05   1.000E-06
+   1.259E+07   1.820E-05   1.000E-06
+   1.585E+07   1.447E-05   1.000E-06
+   1.995E+07   1.150E-05   1.000E-06
+   2.512E+07   9.141E-06   1.000E-06
+   3.162E+07   7.263E-06   1.000E-06
+   3.981E+07   5.770E-06   1.000E-06
+   5.012E+07   4.584E-06   1.000E-06
+   6.310E+07   3.642E-06   1.000E-06
+   7.943E+07   2.893E-06   1.000E-06
+   1.000E+08   2.298E-06   1.000E-06
+   1.259E+08   1.826E-06   1.000E-06
+   1.585E+08   1.450E-06   1.000E-06
+   1.995E+08   1.152E-06   1.000E-06
+   2.512E+08   9.157E-07   1.000E-06
+   3.162E+08   7.278E-07   1.000E-06
+
+
+          JOB CONCLUDED
+
+          TOTAL JOB TIME             .02
+

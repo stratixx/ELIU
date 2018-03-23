@@ -1,0 +1,75 @@
+
+**** 03/09/18 10:22:06 *********** Evaluation PSpice (Nov 1999) **************
+
+ D przeczanie diody sygnaem sin
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+.WIDTH IN=80 OUT=80
+
+*definicja ukadu - rdo sygnau sinusoidalnego f=10MHz "MEG"
+V1 1 0 SIN(0 10 50MEG 0 0)
+D1 2 0 dELIU
+R1 1 2 1K
+
+*model diody
+.MODEL dELIU D IS=3.5E-14 TT=17N CJO=3P BV=10 M=0.33 VJ=0.8 IBV=1.0E-5 RS=1
+
+*definicja zmian czasu - analiza w dziedzine czasu
+.TRAN 0.02n 40n
+
+.OPTIONS NOPAGE
+.PROBE
+.END
+
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+
+
+               dELIU           
+          IS   35.000000E-15 
+          BV   10            
+         IBV   10.000000E-06 
+          RS    1            
+          TT   17.000000E-09 
+         CJO    3.000000E-12 
+          VJ     .8          
+           M     .33         
+
+
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    1)    0.0000  (    2) 2.699E-27  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V1           2.699E-30
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+
+          JOB CONCLUDED
+
+          TOTAL JOB TIME            0.00
+

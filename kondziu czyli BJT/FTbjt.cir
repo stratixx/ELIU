@@ -1,0 +1,35 @@
+BJT czêstotliwoœci graniczne
+
+*OPIS UK£ADU 
+*tranzystor typu BC547B (NPN) pracujacy w po³aczeniu WE
+
+Q1 2 1 0 BC547B
+*    C B E - koñcówki tranzystora
+
+I1 0 1 10u
+IG 1 0 AC 1u
+* Ÿród³o pr¹dowe zasilaj¹ce bazê
+
+V2 2 0 6
+* Ÿród³o napiêciowe na wyjœciu
+
+* PARAMETRY MODELU TRANZYSTORA NPN 
+* 1. linia: parametry materia³owe, statyczne,  i zwi¹zane z zale¿noœciami temperaturowymi  
+* 2. linia: wzmocnienia pr¹dowe, napiêcia Early'ego i wysoki poziom wstrzykiwania
+* 3. i 4. rezystancje obszrów, parametry dynamiczne
+
+.model BC547B NPN(Eg=1.11 IS=7.049f Xti=3 Ise=68f Ne=1.576 Isc=12.4f Nc=1.835
++ BF=400 BR=1 Xtb=1.5  Ikf=81.57m Ikr=3.924 Nk=.4767 
++ Rc=.9747 Cjc=5.25p Mjc=.3147 Vjc=.5697 Fc=.5 
++ Cje=11.5p Mje=.6715 Vje=.5 TR=10n TF=410.2p Itf=1.491 Xtf=40.06 Vtf=10)
+
+*definicja analizy czêstotliwoœciowej
+.AC DEC 10 10 300meg 
+
+.PRINT AC IC(Q1) IB(Q1)
+
+.OP
+
+.OPTIONS NOPAGE
+.PROBE
+.END
