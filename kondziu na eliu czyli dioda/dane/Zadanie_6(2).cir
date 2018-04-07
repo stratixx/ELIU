@@ -1,0 +1,17 @@
+D prze³¹czanie diody sygna³em sin
+.WIDTH IN=80 OUT=80
+
+*definicja uk³adu - Ÿród³o sygna³u sinusoidalnego f=10MHz "MEG"
+V1 1 0 SIN(0 10 50MEG 0 0)
+D1 2 0 dELIU
+R1 1 2 1K
+
+*model diody
+.MODEL dELIU D IS=3.5E-14 TT=5N CJO=3P BV=10 M=0.33 VJ=0.8 IBV=1.0E-5 RS=1
+
+*definicja zmian czasu - analiza w dziedzine czasu
+.TRAN 0.02n 40n
+
+.OPTIONS NOPAGE
+.PROBE
+.END

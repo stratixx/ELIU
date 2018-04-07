@@ -1,0 +1,17 @@
+D prze³¹czanie diody sygna³em impulsowym
+.WIDTH IN=80 OUT=80
+
+*definicja uk³adu - Ÿród³o sygna³u impulsowego
+V1 1 0 PULSE(-10 10 0 0 0 0.5M 1M)
+D1 2 0 dELIU
+R1 1 2 1K
+
+.MODEL dELIU D IS=3.5E-14 TT=47N CJO=3P BV=10 M=0.33 VJ=0.8 IBV=1.0E-5 RS=1
+
+*analiza
+.TRAN 0.01m 2m
+
+.OP
+.OPTIONS NOPAGE
+.PROBE
+.END
