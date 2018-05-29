@@ -10,7 +10,7 @@ Rszereg = [0];
 for k=0:1:12
     for n=1:1:(length(e12)-1)
         if (R>=e12(n))&&(R<=e12(n+1))
-            if R < (e12(n)+e12(n+1))/2
+            if R <= (e12(n)+e12(n+1))/2
                 Rszereg = e12(n);
             else
                 Rszereg = e12(n+1);
