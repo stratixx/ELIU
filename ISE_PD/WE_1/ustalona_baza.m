@@ -1,6 +1,6 @@
 % Podaj dane projektowe Ucc i R1
-Ucc = 15;
-R1 = 2;
+Ucc = 13;
+R1 = 15;
 
 Bdc = 200;
 
