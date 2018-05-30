@@ -24,7 +24,8 @@ end
 fg = min(Ft ./ (1+abs(Ku)) ); % odwracaj¹cy
 %fg = min(Ft ./ (abs(Ku)) ); % nieodwracaj¹cy
 tnw = 0.35/fg;
-Amaxpp = SR/(pi*fg);
+Amax = SR/(2*pi*fg);
 Fmax = SR/(Uomax*2*pi);
+UomaxFo = SR/(2*pi*100e3);
 
 save(strcat(opAmp, '_Ku_', num2str(Kuproj), '.mat'));
