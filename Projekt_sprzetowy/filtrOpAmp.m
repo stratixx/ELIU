@@ -32,7 +32,7 @@ tf1 = R1/(R1+X1); % highpass
 tf2 = X2/(R2+X2); % lowpass
 
 filter = tf2 * tf1;
-
+figure(2)
 bode(filter)
 hold on; box on; grid on; 
 bode(tf2)

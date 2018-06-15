@@ -5,8 +5,10 @@ ampl = [ 15.2 32.8 36.4 42.4 45.6 47.2 49.6 50 49.2 49 47.4 46.6 44.8 42.8 40.8 
 
 figure(1);
 hold on; box on; grid on;
-semilogx(freq,ampl/in,'-*');
+semilogx(freq,20*log10(ampl/in),'-*');
+set(gca, 'XScale', 'log')
 title('Charakterystyka amplitudowa wzmacniacza');
 xlabel('Czêstotliwoœæ [Hz]');
-ylabel('Wzmocnienie [V/V]');
+ylabel('Wzmocnienie [dB]');
+print('char_ampl_wzm','-dpng')
 
